@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.core.app.NotificationCompat
 import com.mrshashankbisht.learnworkmanager.util.CHANNEL_ID
 import dagger.hilt.android.HiltAndroidApp
 
@@ -23,12 +24,10 @@ class Application: Application() {
             // Create the NotificationChannel.
             val name = getString(R.string.channel_name)
             val descriptionText = getString(R.string.channel_description)
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_HIGH
+
             val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
             mChannel.description = descriptionText
-            mChannel.lightColor = Color.Red.toArgb()
-            // adding sound to notification channel
-
             // Define the sound URI
             val soundUri =
                 Uri.parse("android.resource://" + packageName + "/" + R.raw.notification_sound)
@@ -37,6 +36,11 @@ class Application: Application() {
                 .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                 .build()
             mChannel.setSound(soundUri, audioAttributes)
+            mChannel.enableLights(true);
+            mChannel.lightColor = Color.Red.toArgb()
+            mChannel.setShowBadge(true);
+            mChannel.enableVibration(true)
+            mChannel.vibrationPattern = longArrayOf(400, 200, 400)
 
             // Register the channel with the system. You can't change the importance
             // or other notification behaviors after this.

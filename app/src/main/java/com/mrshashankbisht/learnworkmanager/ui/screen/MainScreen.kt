@@ -14,7 +14,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import com.mrshashankbisht.learnworkmanager.component.ClickableTextButton
-import com.mrshashankbisht.learnworkmanager.worker.ShowNewsNotification
+import com.mrshashankbisht.learnworkmanager.worker.PushNotificationWorkManager
 
 /**
  * Created by Shashank on 22-04-2024
@@ -48,11 +48,11 @@ private fun MainScreenPreview() {
  * */
 fun createOnTimeWorkRequestBuilder(context: Context) {
     // 1) create a request builder
-    val showNewsNotificationRequestBuilder: WorkRequest =
-        OneTimeWorkRequestBuilder<ShowNewsNotification>()
+    val pushNotificationWorkManagerRequestBuilder: WorkRequest =
+        OneTimeWorkRequestBuilder<PushNotificationWorkManager>()
             .build()
     // submit the workerRequest to the system
     WorkManager
         .getInstance(context)
-        .enqueue(showNewsNotificationRequestBuilder)
+        .enqueue(pushNotificationWorkManagerRequestBuilder)
 }
