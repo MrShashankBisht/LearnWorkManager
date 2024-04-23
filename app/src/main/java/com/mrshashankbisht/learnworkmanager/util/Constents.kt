@@ -7,3 +7,4 @@ package com.mrshashankbisht.learnworkmanager.util
 const val CHANNEL_ID = "LearnWorkManagerChannelId"
 const val ONE_TIME_WORK_NOTIFICATION_ID = 101
 const val REQUEST_CODE_PERMISSION = 1
+const val PERIODIC_NOTIFICATION_WORKER_NAME = "NotificationWorker"

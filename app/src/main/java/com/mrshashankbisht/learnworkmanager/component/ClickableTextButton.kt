@@ -17,16 +17,17 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun ClickableTextButton(text: String = "Ok", onClick: () -> Unit) {
+fun ClickableTextButton(modifier: Modifier = Modifier, text: String = "Ok", onClick: () -> Unit) {
     Text(
         text = text,
-        modifier = Modifier
+        modifier = modifier
             .background(Color.LightGray)
             .clickable {
                 onClick()
             }
             .padding(10f.dp, 5f.dp),
         fontSize = 16f.sp,
-        color = Color.DarkGray
+        color = Color.DarkGray,
+
     )
 }
